@@ -248,3 +248,6 @@ This will destory resources. Destroy will prompt yes or no. Run apply with --aut
 
 `.terraform` directory contains binaries of terraform providers.
 
+#### S3 Bucket
+
+We ran into an issue when creating the S3 bucket. We had to use lower cases to fix the issue.
