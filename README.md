@@ -251,3 +251,38 @@ This will destory resources. Destroy will prompt yes or no. Run apply with --aut
 #### S3 Bucket
 
 We ran into an issue when creating the S3 bucket. We had to use lower cases to fix the issue.
+
+
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash wiswig view to generate a token. However it does not work in Gitpod VsCode in the browser.
+
+The workaround is manually generate a token in Terraform Cloud.
+
+```
+https://app.terraform.io/app/settings/tokens
+
+```
+Then create and open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+
+
+```
