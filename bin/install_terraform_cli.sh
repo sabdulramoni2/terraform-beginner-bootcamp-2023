@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+terraform#!/usr/bin/env bash
 
 cd /workspace
 
