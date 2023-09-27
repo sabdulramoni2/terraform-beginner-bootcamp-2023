@@ -286,3 +286,6 @@ Provide the following code (replace your token in the file):
 
 
 ```
+
+
+We have to automate this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
