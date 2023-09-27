@@ -225,6 +225,13 @@ This shows you the resources that will be change (added or deleted or updated)
 
 This exectute the proposed chnages shown above. Apply will prompt yes or no. Run apply with --auto-approve to ignore the prompt. eg. terraform apply --auto-approve.
 
+### Terraform Destroy
+
+`terraform destroy`
+
+This will destory resources. Destroy will prompt yes or no. Run apply with --auto-approve to ignore the prompt. eg. terraform destroy --auto-approve.
+
+
 
 ### Terraform Lock Files
 
@@ -241,3 +248,6 @@ This exectute the proposed chnages shown above. Apply will prompt yes or no. Run
 
 `.terraform` directory contains binaries of terraform providers.
 
+#### S3 Bucket
+
+We ran into an issue when creating the S3 bucket. We had to use lower cases to fix the issue.
