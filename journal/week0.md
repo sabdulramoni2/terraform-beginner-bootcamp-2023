@@ -129,7 +129,7 @@ chmod 744 ./bin/install_terraform_cli
 https://en.wikipedia.org/wiki/File-system_permissions#Permissions
 
 
-### GithubLifecyle Before, Init, Command
+### GitpodLifecyle
 
 We need to be careful when using the Init because it will not rerun if we start an existing workspace.
 
