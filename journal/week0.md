@@ -15,7 +15,7 @@
     + [Printing Vars](#printing-vars)
     + [Scoping of Env Vars](#scoping-of-env-vars)
     + [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
-  * [AWS CLI Installation](#aws-cli-installation)
+- [AWS CLI Installation](#aws-cli-installation)
 - [Terraform Basic](#terraform-basic)
   * [Terraform Registry](#terraform-registry)
   * [Terraform console](#terraform-console)
@@ -26,7 +26,7 @@
     + [Terraform Lock Files](#terraform-lock-files)
     + [Terraform State File](#terraform-state-file)
     + [Terraform Directory](#terraform-directory)
-    + [S3 Bucket](#s3-bucket)
+ - [S3 Bucket](#s3-bucket)
 - [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
