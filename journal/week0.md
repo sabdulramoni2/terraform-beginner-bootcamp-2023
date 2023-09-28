@@ -8,7 +8,7 @@
     + [Shebang Consideration](#shebang-consideration)
     + [Execution Considerations](#execution-considerations)
     + [Linux Permissions Considerations](#linux-permissions-considerations)
-  * [GithubLifecyle Before, Init, Command](#githublifecyle-before--init--command)
+- [Gitpod Lifecyle Before, Init, Command](#githublifecyle-before--init--command)
 - [Working Env Vars](#working-env-vars)
     + [env command](#env-command)
     + [Setting and unsetting Env Vars](#setting-and-unsetting-env-vars)
