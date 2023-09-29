@@ -56,3 +56,25 @@ Terraform loads variables in the following order, with later sources taking prec
 #### The terraform.tfvars.json file, if present.
 #### Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
 #### Any -var and -var-file options on the command line, in the order they are provided. (This includes variables set by a Terraform Cloud workspace.)
+
+
+## Dealing with Configuration Drift
+
+## What happens if we lose our state file?
+
+If you lose your statefile, you most likely have to tear down all your resources manually.
+
+You can use terraform import but it won't work for all cloud resources. Hence the need to check terraform provides documentation to see which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+If someone delete or modifiy cloud resources manually via clickops.
+
+Terraform plan attempt to put our infracstructure back into the expected state fixing Configuration Drift.
