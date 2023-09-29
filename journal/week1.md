@@ -1,2 +1,58 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+## Root Module Structure
+
+Our root module structure is as follows:
+```
+- PROJECT_ROOT
+
+    - Main.tf           # everything else
+    - variable.tf       # Stores the structure of input variables
+    - terraform.tfvars  # The data of variables we want to load into our Terraform project
+    - Providers.tf      # Defined required providers and their configuration
+    - outputs.tf        # Stores outputs
+    - README.md         # Required for root modules
+
+  ```
+
+[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+
+## Terraform and Input Variables
+
+### Terraform Cloud Variables
+
+In terraform we can set two kind of variables:
+- Environment Variables - those you set in your bash terminals eg. AWS credntials.
+- Terraform variables - those that are set in tfvars file
+
+We have the option of setting the Terraform Cloud variables to be sensitive.
+
+### Loading Terraform Input Variables
+[Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+
+
+### var flag
+We can use the `-vars` flag to set an input variable or override a variable in the tfvars file eg. `terraform -var user_ud="my-user_id`
+
+### var-file flag
+
+-var-file flag enables multiple input variable values to be passed in by referencing a file that contains the values.
+
+#### terraform.tfvars
+
+This is the dafault file to load in terraform variables in blunk
+
+### auto.tfvars
+
+Terraform also automatically loads a number of variable definitions files if they are present:
+Any files with names ending in .auto.tfvars or .auto.tfvars.json
+
+### order of terraform variables
+
+Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
+#### Environment variables
+#### The terraform.tfvars file, if present.
+#### The terraform.tfvars.json file, if present.
+#### Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
+#### Any -var and -var-file options on the command line, in the order they are provided. (This includes variables set by a Terraform Cloud workspace.)
