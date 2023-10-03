@@ -195,3 +195,25 @@ resource "aws_s3_object" "index" {
   key    = "index.html"
   source = "${path.root}/public/index.html"
 }
+
+## Terraform Locals
+
+[Locals Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+### Terraform Data Source
+
+This allows to source data from cloud resources. This is useful for reference cloud resources without importing them.
+
+```tf
+data "aws_caller_identity" "current" {}
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+
+
+```
+
+[Data Source](https://developer.hashicorp.com/terraform/language/data-sources)
+
+
