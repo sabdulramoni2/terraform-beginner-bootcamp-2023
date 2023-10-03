@@ -249,3 +249,119 @@ We use jsonencode to create a json policy inline with HCL
 Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
 
 https://developer.hashicorp.com/terraform/language/resources/terraform-data
+
+
+## Provisioners
+
+
+# https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax
+You can use provisioners to model specific actions on the local machine or on a remote machine in order to prepare servers or other infrastructure objects for service.
+
+```tf
+
+
+data "cloudinit_config" "my_cloud_config" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    content_type = "text/cloud-config"
+    filename     = "cloud.conf"
+    content = yamlencode(
+      {
+        "write_files" : [
+          {
+            "path" : "/etc/foo.conf",
+            "content" : "foo contents",
+          },
+          {
+            "path" : "/etc/bar.conf",
+            "content" : file("bar.conf"),
+          },
+          {
+            "path" : "/etc/baz.conf",
+            "content" : templatefile("baz.tpl.conf", { SOME_VAR = "qux" }),
+          },
+        ],
+      }
+    )
+  }
+}
+```
+### local-exec
+#https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec
+The local-exec provisioner invokes a local executable after a resource is created. This invokes a process on the machine running Terraform, not on the resource.
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_ips.txt"
+  }
+}
+```
+### remote-exec
+#https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
+The remote-exec provisioner invokes a script on a remote resource after it is created. This can be used to run a configuration management tool, bootstrap into a cluster, etc.
+
+```tf
+
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+
+```
+
+### File Provisioner
+
+The file provisioner copies files or directories from the machine running Terraform to the newly created resource. The file provisioner supports both ssh and winrm type connections.
+
+#https://developer.hashicorp.com/terraform/language/resources/provisioners/file
+
+```tf
+
+resource "aws_instance" "web" {
+  # ...
+
+  # Copies the myapp.conf file to /etc/myapp.conf
+  provisioner "file" {
+    source      = "conf/myapp.conf"
+    destination = "/etc/myapp.conf"
+  }
+
+  # Copies the string in content into /tmp/file.log
+  provisioner "file" {
+    content     = "ami used: ${self.ami}"
+    destination = "/tmp/file.log"
+  }
+
+  # Copies the configs.d folder to /etc/configs.d
+  provisioner "file" {
+    source      = "conf/configs.d"
+    destination = "/etc"
+  }
+
+  # Copies all files and folders in apps/app1 to D:/IIS/webapp1
+  provisioner "file" {
+    source      = "apps/app1/"
+    destination = "D:/IIS/webapp1"
+  }
+}
+```
