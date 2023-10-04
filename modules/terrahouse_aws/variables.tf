@@ -48,3 +48,8 @@ variable "content_version" {
   }
 }
 
+
+variable "assets_path" {
+  description = "path to assets folder"
+  type = string
+}
