@@ -7,6 +7,7 @@
 
   tags = {
     UserUuid        = var.user_uuid
+    hELLO = "WORLD"
   }
 
 }
@@ -57,12 +58,14 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
             },
             "Action"=  "s3:GetObject",
             "Resource" = "arn:aws:s3:::${aws_s3_bucket.website_bucket.id}/*",
+            /*
             "Condition" = {
             "StringEquals" = {
              "AWS:SourceArn" = "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
              #"AWS:SourceArn": data.aws_caller_identity.current.arn
                 }
             }
+            */
         }
   })       
 }
