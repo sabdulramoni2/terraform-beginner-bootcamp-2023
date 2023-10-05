@@ -7,7 +7,7 @@
 
   tags = {
     UserUuid        = var.user_uuid
-    Hello = "Jupiter and Mars"
+    Hello = "Jupiter and Markkkks"
   }
 
 }
