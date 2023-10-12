@@ -10,9 +10,6 @@ import (
 	"net/http"
 	"log"
 	"fmt"
-	"log"
-	"fmt"
-	"context"
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -73,7 +70,6 @@ func validateUUID(v interface{}, k string) (ws []string, errors []error) {
 	log.Print("validateUUID:start")
 	value := v.(string)
 	if _, err := uuid.Parse(value); err != nil {
-	if _,err := uuid.Parse(value); err != nil {
 		errors = append(errors, fmt.Errorf("invalid UUID format"))
 	}
 	log.Print("validateUUID:end")
