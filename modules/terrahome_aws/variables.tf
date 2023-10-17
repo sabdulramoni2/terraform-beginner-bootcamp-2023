@@ -18,25 +18,12 @@ variable "user_uuid" {
 #  }
 #}
 
-variable "index_html_filepath" {
-  description = "Path to the index.html file"
+variable "public_path" {
+  description = "Path to the public directory"
   type        = string
 
-  validation {
-    condition     = can(file(var.index_html_filepath))
-    error_message = "The specified index_html_filepath does not point to a valid file."
-  }
 }
 
-variable "error_html_filepath" {
-  description = "Path to the error.html file"
-  type        = string
-
-  validation {
-    condition     = can(file(var.error_html_filepath))
-    error_message = "The specified error_html_filepath does not point to a valid file."
-  }
-}
 
 variable "content_version" {
   description = "Positive integer representing content version"
@@ -48,8 +35,22 @@ variable "content_version" {
   }
 }
 
+#variable "north2_public_path" {
+#  description = "Path to the public directory"
+#  type        = string
 
-variable "assets_path" {
-  description = "path to assets folder"
-  type = string
+#}
+
+variable "north_public_path" {
+  description = "Path to the public directory"
+  type        = string
+
 }
+
+variable "north" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
+}
+

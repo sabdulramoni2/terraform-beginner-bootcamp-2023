@@ -9,24 +9,30 @@ variable "terratowns_access_token" {
   type        = string
 }
 
-variable "bucket_name" {
+
+
+variable "north" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
+}
+
+#variable "north2" {
+#  type = object({
+#    public_path = string
+#    content_version = number
+#  })
+#}
+
+variable "north_public_path" {
+  description = "Path to the public directory"
   type        = string
+
 }
 
-variable "index_html_filepath" {
+variable "public_path" {
+  description = "Path to the public directory"
   type        = string
-}
 
-variable "error_html_filepath" {
-  type        = string
 }
-
-variable "content_version" {
-  type        = number
-}
-
-variable "assets_path" {
-  description = "path to assets folder"
-  type = string
-}
-
