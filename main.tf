@@ -13,12 +13,12 @@ terraform {
   #    name = "terra-house-1"
   #  }
   #}
-  #cloud {
-  #  organization = "ExamPro"
-  #  workspaces {
-  #    name = "terra-house-1"
-  #  }
-  #}
+  cloud {
+    organization = "sabdulramoni2"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 
 }
 
@@ -28,24 +28,43 @@ provider "terratowns" {
   token=var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "terrahome_aws" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
-}
+  public_path = var.north.public_path
+  content_version = var.north.content_version
+} 
 
 resource "terratowns_home" "home" {
-  name = "North London derby!!!!!!"
+  name = "JOLLOF RICE!!!!!!"
   description =<<DESCRIPTION
-The North London derby is the meeting of the association football clubs Arsenal and Tottenham Hotspur,
-both of which are based in North London, England. Fans of both clubs consider the other to be their main
-rivals, and the derby is considered by many to be one of the fiercest derbies in the world.
+Jollof rice, is a rice dish from West Africa. The dish is typically made with long-grain rice, tomatoes, chilies, onions, spices,
+and sometimes other vegetables and/or meat in a single pot, although its ingredients and preparation methods vary across different regions.
+The dish's origins trace to the Senegambian region.Regional variations are a source of competition between the countries of West Africa, 
+and in particular Nigeria and Ghana, over whose version is the best; in the 2010s this developed into a friendly rivalry
+known as the "Jollof Wars".
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.terrahome_aws.domain_name
   #domain_name = "1133333.cloudfront.net"
-  town = "missingo"
-  content_version = 1
+  town = "cooker-cove"
+  content_version = var.north.content_version
+}
+
+
+module "terrahouse_aws2" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.north2.public_path
+  content_version = var.north2.content_version
+}
+
+resource "terratowns_home" "home2" {
+  name = "JAGUN JAGUN!!!!!!"
+  description =<<DESCRIPTION
+A young man determined to become a mighty warrior joins an elite army, encountering the wrath of a maniacal warlord and the love of a woman.
+DESCRIPTION
+  domain_name = module.terrahouse_aws2.domain_name
+  #domain_name = "1133333.cloudfront.net"
+  town = "video-valley"
+  content_version = var.north2.content_version
 }
