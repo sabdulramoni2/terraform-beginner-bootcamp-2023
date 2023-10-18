@@ -41,16 +41,7 @@ variable "content_version" {
 
 #}
 
-variable "north_public_path" {
-  description = "Path to the public directory"
-  type        = string
 
-}
 
-variable "north" {
-  type = object({
-    public_path = string
-    content_version = number
-  })
-}
+
 

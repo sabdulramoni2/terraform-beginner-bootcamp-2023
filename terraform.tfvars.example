@@ -1,18 +1,11 @@
 terratowns_endpoint = "https://terratowns.cloud/api"
-north_public_path = {
-    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/north"
-    content_version = "1"
-}
+
 
 north2 = {
     public_path = "/workspace/terraform-beginner-bootcamp-2023/public/north2"
     content_version = 1
 }
 
-public_path = {
-    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/north"
-    content_version = "1"
-}
 north = {
     public_path = "/workspace/terraform-beginner-bootcamp-2023/public/north"
     content_version = 1

@@ -18,21 +18,11 @@ variable "north" {
   })
 }
 
-#variable "north2" {
-#  type = object({
-#    public_path = string
-#    content_version = number
-#  })
-#}
-
-variable "north_public_path" {
-  description = "Path to the public directory"
-  type        = string
-
+variable "north2" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
 }
 
-variable "public_path" {
-  description = "Path to the public directory"
-  type        = string
 
-}

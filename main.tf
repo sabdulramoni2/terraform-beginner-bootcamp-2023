@@ -31,10 +31,9 @@ provider "terratowns" {
 module "terrahome_aws" {
   source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  north_public_path = var.north.public_path
-  public_path = var.public_path
+  public_path = var.north.public_path
   content_version = var.north.content_version
-}
+} 
 
 resource "terratowns_home" "home" {
   name = "North London derby!!!!!!"
@@ -45,7 +44,7 @@ rivals, and the derby is considered by many to be one of the fiercest derbies in
 DESCRIPTION
   domain_name = module.terrahome_aws.domain_name
   #domain_name = "1133333.cloudfront.net"
-  town = "missingo"
+  town = "Missingo"
   content_version = 1
 }
 
@@ -54,7 +53,7 @@ DESCRIPTION
 #  source = "./modules/terrahome_aws"
 #  user_uuid = var.teacherseat_user_uuid
 #  public_path = var.north2.public_path
-#  content_version = var.nrth2.content_version
+#  content_version = var.north2.content_version
 #}
 
 #resource "terratowns_home" "home2" {
